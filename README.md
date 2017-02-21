@@ -97,8 +97,15 @@ import (
     "github.com/lextoumbourou/goodhosts"
 )
 
+func check(err error) {
+    if err != nil {
+        panic(err)
+    }
+}
+
 func main() {
-    hosts := goodhosts.NewHosts()
+    hosts, err := goodhosts.NewHosts()
+    check(err)
 
     for _, line := range hosts.Lines {
         fmt.Println(line.Raw)
@@ -116,8 +123,15 @@ import (
     "github.com/lextoumbourou/goodhosts"
 )
 
+func check(err error) {
+    if err != nil {
+        panic(err)
+    }
+}
+
 func main() {
-    hosts := goodhosts.NewHosts()
+    hosts,err := goodhosts.NewHosts()
+    check(err)
 
     if hosts.Has("127.0.0.1", "facebook.com") {
         fmt.Println("Entry exists!")
@@ -134,12 +148,18 @@ func main() {
 package main
 
 import (
-    "fmt"
     "github.com/lextoumbourou/goodhosts"
 )
 
+func check(err error) {
+    if err != nil {
+        panic(err)
+    }
+}
+
 func main() {
-    hosts := goodhosts.NewHosts()
+    hosts, err := goodhosts.NewHosts()
+    check(err)
 
     // Note that nothing will be added to the hosts file until ``hosts.Flush`` is called.
     hosts.Add("127.0.0.1", "facebook.com", "twitter.com")
@@ -156,12 +176,18 @@ func main() {
 package main
 
 import (
-    "fmt"
     "github.com/lextoumbourou/goodhosts"
 )
 
+func check(err error) {
+    if err != nil {
+        panic(err)
+    }
+}
+
 func main() {
-    hosts := goodhosts.NewHosts()
+    hosts, err := goodhosts.NewHosts()
+    check(err)
 
     // Same deal, yo: call hosts.Flush() to make permanent.
     hosts.Remove("127.0.0.1", "facebook.com", "twitter.com")
